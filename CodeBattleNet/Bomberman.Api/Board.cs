@@ -53,7 +53,7 @@ namespace Bomberman.Api
 			return Get(Element.BOMBERMAN)
 					.Concat(Get(Element.BOMB_BOMBERMAN))
 					.Concat(Get(Element.DEAD_BOMBERMAN))
-					.Single();
+					.FirstOrDefault();
 		}
 
 		public List<Point> GetOtherBombermans()
