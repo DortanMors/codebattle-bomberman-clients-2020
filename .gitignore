@@ -1,0 +1,6 @@
+/CodeBattleNet/.vs/*
+/CodeBattleNet/Bomberman.Api/bin*
+/CodeBattleNet/Bomberman.Api/obj/*
+/CodeBattleNet/Demo/bin/*
+/CodeBattleNet/Demo/obj/*
+/CodeBattleNet/packages/*

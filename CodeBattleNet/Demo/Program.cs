@@ -26,8 +26,7 @@ namespace Demo
 {
 	class Program
 	{
-
-		// you can get this code after registration on the server with your email
+		// Сюда необходимо вставлять строку из адресной строки браузера, после того, как вы авторизуетесь на игровом сервере
 		static string ServerUrl = "http://serverurl/codenjoy-contest/board/player/123jhhskdkasjdh1?code=1234567890&gameName=bomberman";
 
 		static void Main(string[] args)
