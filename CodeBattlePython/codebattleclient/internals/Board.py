@@ -22,8 +22,7 @@ class Board:
         return self._find_all(Element('WALL'))
 
     def am_i_dead(self):
-        return self._find_first(Element('DEAD_BOMBERMAN')).__contains__(element('DEAD_BOMBERMAN'))
-
+        return self.find_first_element(Element('DEAD_BOMBERMAN')) is not None
 
     def get_destroyable_walls(self):
         return self._find_all(Element('WALL_DESTROYABLE'))
