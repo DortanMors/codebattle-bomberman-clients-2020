@@ -34,7 +34,8 @@ namespace Demo
 		}
 
 		/// <summary>
-		/// Calls each move to make decision what to do (next move)
+		/// «десь необходимо писать логику дл€ вашего бота.
+		///  аждый ход сюда будет приходить новое состо€ние доски, на основании которого необходимо отправить на выход строку с вашим действием на данный ход.
 		/// </summary>
 		protected override string Get(Board board)
 		{
