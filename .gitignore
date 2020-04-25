@@ -1,6 +1,8 @@
-/CodeBattleNet/.vs/*
-/CodeBattleNet/Bomberman.Api/bin*
-/CodeBattleNet/Bomberman.Api/obj/*
-/CodeBattleNet/Demo/bin/*
-/CodeBattleNet/Demo/obj/*
-/CodeBattleNet/packages/*
+*.idea
+*.gradle
+.idea
+.gradle
+gradle/
+build/
+.bat
+build
