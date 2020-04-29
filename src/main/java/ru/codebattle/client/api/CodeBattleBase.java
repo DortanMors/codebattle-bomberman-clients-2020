@@ -33,14 +33,14 @@ public abstract class CodeBattleBase extends WebSocketClient {
     @Override
     public void onMessage(String message) {
 //        if (!shouldExit) {
-            if (!message.startsWith(responsePrefix)) {
-                log.error(String.format("Something strange is happening on the server... Response:%n%s", message));
-                shouldExit = true;
-            } else {
-                String boardString = message.substring(responsePrefix.length());
-                String action = doMove(new GameBoard(boardString));
-                send(action);
-            }
+        if (!message.startsWith(responsePrefix)) {
+            log.error(String.format("Something strange is happening on the server... Response:%n%s", message));
+            shouldExit = true;
+        } else {
+            String boardString = message.substring(responsePrefix.length());
+            String action = doMove(new GameBoard(boardString));
+            send(action);
+        }
 //        }
     }
 

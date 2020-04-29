@@ -9,16 +9,16 @@ import static ru.codebattle.client.api.BoardElement.*;
 
 public class GameBoard {
 
-  public GameBoard(String boardString) {
-    this.boardString = boardString.replace("\n", "");
-  }
+    public GameBoard(String boardString) {
+        this.boardString = boardString.replace("\n", "");
+    }
 
-  @Getter
-  private String boardString;
+    @Getter
+    private String boardString;
 
-  public int size() {
-    return (int) Math.sqrt(boardString.length());
-  }
+    public int size() {
+        return (int) Math.sqrt(boardString.length());
+    }
 
     public List<BoardPoint> getWalls() {
         return findAllElements(WALL);
@@ -46,78 +46,78 @@ public class GameBoard {
     }
     public List<BoardPoint> getBarriers() {
         return findAllElements(
-            WALL, DESTROY_WALL,
-            MEAT_CHOPPER,
-            OTHER_BOMBERMAN,
-            OTHER_BOMB_BOMBERMAN, BOMB_TIMER_1, BOMB_TIMER_2, BOMB_TIMER_3, BOMB_TIMER_4, BOMB_TIMER_5 );
+                WALL, DESTROY_WALL,
+                MEAT_CHOPPER,
+                OTHER_BOMBERMAN,
+                OTHER_BOMB_BOMBERMAN, BOMB_TIMER_1, BOMB_TIMER_2, BOMB_TIMER_3, BOMB_TIMER_4, BOMB_TIMER_5 );
     }
 
     public boolean hasElementAt(BoardPoint point, BoardElement element) {
-    if (point.isOutOfBoard(size())) {
-      return false;
-    }
-
-    return getElementAt(point) == element;
-  }
-
-  public BoardElement getElementAt(BoardPoint point) {
-    return BoardElement.valueOf(boardString.charAt(getShiftByPoint(point)));
-  }
-
-  public void printBoard() {
-    for (int i = 0; i < size(); i++) {
-      System.out.println(boardString.substring(i * size(), size() * (i + 1)));
-    }
-  }
-
-  public BoardPoint findElement(BoardElement elementType) {
-    for (int i = 0; i < size() * size(); i++) {
-      BoardPoint pt = getPointByShift(i);
-      if (hasElementAt(pt, elementType)) {
-        return pt;
-      }
-    }
-    return null;
-  }
-
-  public BoardPoint findFirstElement(BoardElement... elementType) {
-      for (int i = 0; i < size() * size(); i++) {
-          BoardPoint pt = getPointByShift(i);
-
-          for (BoardElement elemType : elementType) {
-              if (hasElementAt(pt, elemType)) {
-                  return pt;
-              }
-          }
-      }
-      return null;
-  }
-
-  public List<BoardPoint> findAllElements(BoardElement... elementType) {
-    List<BoardPoint> result = new ArrayList<>();
-
-    for (int i = 0; i < size() * size(); i++) {
-      BoardPoint pt = getPointByShift(i);
-
-      for (BoardElement elemType : elementType) {
-        if (hasElementAt(pt, elemType)) {
-          result.add(pt);
+        if (point.isOutOfBoard(size())) {
+            return false;
         }
-      }
+
+        return getElementAt(point) == element;
     }
 
-    return result;
-  }
+    public BoardElement getElementAt(BoardPoint point) {
+        return BoardElement.valueOf(boardString.charAt(getShiftByPoint(point)));
+    }
 
-  public boolean hasElementAt(BoardPoint point, BoardElement... elements) {
-    return Arrays.stream(elements).anyMatch(element -> hasElementAt(point, element));
-  }
+    public void printBoard() {
+        for (int i = 0; i < size(); i++) {
+            System.out.println(boardString.substring(i * size(), size() * (i + 1)));
+        }
+    }
 
-  private int getShiftByPoint(BoardPoint point) {
-    return point.getY() * size() + point.getX();
-  }
+    public BoardPoint findElement(BoardElement elementType) {
+        for (int i = 0; i < size() * size(); i++) {
+            BoardPoint pt = getPointByShift(i);
+            if (hasElementAt(pt, elementType)) {
+                return pt;
+            }
+        }
+        return null;
+    }
 
-  private BoardPoint getPointByShift(int shift) {
-    return new BoardPoint(shift % size(), shift / size());
-  }
+    public BoardPoint findFirstElement(BoardElement... elementType) {
+        for (int i = 0; i < size() * size(); i++) {
+            BoardPoint pt = getPointByShift(i);
+
+            for (BoardElement elemType : elementType) {
+                if (hasElementAt(pt, elemType)) {
+                    return pt;
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<BoardPoint> findAllElements(BoardElement... elementType) {
+        List<BoardPoint> result = new ArrayList<>();
+
+        for (int i = 0; i < size() * size(); i++) {
+            BoardPoint pt = getPointByShift(i);
+
+            for (BoardElement elemType : elementType) {
+                if (hasElementAt(pt, elemType)) {
+                    result.add(pt);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public boolean hasElementAt(BoardPoint point, BoardElement... elements) {
+        return Arrays.stream(elements).anyMatch(element -> hasElementAt(point, element));
+    }
+
+    private int getShiftByPoint(BoardPoint point) {
+        return point.getY() * size() + point.getX();
+    }
+
+    private BoardPoint getPointByShift(int shift) {
+        return new BoardPoint(shift % size(), shift / size());
+    }
 }
