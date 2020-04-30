@@ -14,7 +14,7 @@ public class Vector2r {
 
     public Vector2f toVector2f()
     {
-        return new Vector2f(r * (float)cos(angle), r * (float)sin(angle));
+        return toVector2f(r, angle);
     }
 
     public static Vector2f toVector2f(float r, float angle)

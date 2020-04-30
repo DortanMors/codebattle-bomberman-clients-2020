@@ -1,7 +1,6 @@
 package ru.codebattle.client.vector2;
 
-import static java.lang.Math.atan2;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 
 public class Vector2f {
     public float x;
@@ -11,15 +10,27 @@ public class Vector2f {
         this.x = x;
         this.y = y;
     }
-/* Может дать неверный результат. Не используется
+
+
     public Vector2r toVector2r()
     {
-        return new Vector2r((float)sqrt(x*x+y*y), (float)atan2(y,x));
+        return toVector2r(x,y);
     }
 
     public static Vector2r toVector2r(float x, float y)
     {
-        return new Vector2r((float)sqrt(x*x+y*y), (float)atan2(y,x));
+        float angle = (float)atan2(abs(y),abs(x));
+        if(y>=0)
+        {
+            if(x<0)angle = (float)PI - angle;
+        }
+        else
+        {
+            if(x<0)
+                angle = (float)PI + angle;
+            else
+                angle = -angle;
+        }
+        return new Vector2r((float)sqrt(x*x+y*y), angle);
     }
- */
 }

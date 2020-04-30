@@ -1,30 +1,25 @@
 package ru.codebattle.client.vector2;
 import ru.codebattle.client.api.Direction;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Operations {
     private final static float PI4 = (float)Math.PI/4;
-    private final static float ROUND_MIN = 1.0f;
+    private final static float ROUND_MIN = 0.1f;
 
     public static Vector2f add(Vector2f left, Vector2f right)
     {
         return new Vector2f(left.x+right.x, left.y+right.y);
     }
-/* Может дать неверный результат. Не используется
-    public static Vector2r add(Vector2r left, Vector2r right)
-    {
-        return add(left.toVector2f(), right.toVector2f()).toVector2r;
-    }
-*/
-    public static Vector2f vectorSum(Vector2f[] vectors)
+
+    public static Vector2f vectorSum(ArrayList<Vector2f> vectors)
     {
         float x = 0;
         float y = 0;
-        for(int i = 0; i<vectors.length;++i)
+        for(int i = 0; i<vectors.size();++i)
         {
-            x+= vectors[i].x;
-            y+= vectors[i].y;
+            x+= vectors.get(i).x;
+            y+= vectors.get(i).y;
         }
         return new Vector2f(x,y);
     }
